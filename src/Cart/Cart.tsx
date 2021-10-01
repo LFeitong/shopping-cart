@@ -1,5 +1,6 @@
 import CartItem from '../CartItem/CartItem';
 import { CartItemType } from '../App';
+import { Wrapper } from './Cart.styles';
 
 type Props = {
   cartItems: CartItemType[];
@@ -12,7 +13,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
     items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
 
   return (
-    <div>
+    <Wrapper>
       <h2>Your Shopping Cart</h2>
       {cartItems.length === 0 ? <p>No items in cart.</p> : null}
       {cartItems.map(item => (
@@ -24,7 +25,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
         />
       ))}
       <h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
-    </div>
+    </Wrapper>
   );
 };
 
